@@ -1,5 +1,0 @@
-{
-    "board": "arduino:avr:uno",
-    "programmer": "avrisp",
-    "sketch": "practice-1/avr/avr.ino"
-}
