@@ -19,43 +19,41 @@
 //  └────────────────────────────────────────────┘
 //
 //  filename    : avr.ino
-//  path        : practice-1/avr/avr.ino
 //  description : LED and Button control
 //  author      : Loki
-//  last update : 2023/06/26 11:42
 //
 
 #include "button.h"
 #include "led.h"
 
-void MainInit1(void);
-void MainInit2(void);
-void MainInit3(void);
-void MainLoop1(void);
-void MainLoop2(void);
-void MainLoop3(void);
+void InitMain1(void);
+void InitMain2(void);
+void InitMain3(void);
+void LoopMain1(void);
+void LoopMain2(void);
+void LoopMain3(void);
 
 uint8_t select = 1;
 
 //
-//  practice 1-1
+//  practice 1
 //
-void MainInit1(void) {
+void InitMain1(void) {
   led = 0xf0;
 }
-void MainLoop1(void) {
+void LoopMain1(void) {
   if (button[0].status == PRESS) {
     led = (led == 0x0f) ? 0xf0 : 0x0f;
   }
 }
 
 //
-//  practice 1-2
+//  practice 1
 //
-void MainInit2(void) {
+void InitMain2(void) {
   led = 0x00;
 }
-void MainLoop2(void) {
+void LoopMain2(void) {
   static uint16_t timeCounter = 0;
 
   if (button[0].status == HOLD) {
@@ -70,12 +68,12 @@ void MainLoop2(void) {
 }
 
 //
-//  practice 1-3
+//  practice 1
 //
-void MainInit3(void) {
+void InitMain3(void) {
   led = 0x01;
 }
-void MainLoop3(void) {
+void LoopMain3(void) {
   static uint8_t timeCounter = 0;
 
   if (++timeCounter == 255) {
@@ -92,33 +90,33 @@ void MainLoop3(void) {
 //  setup
 //
 void setup(void) {
-  ButtonInit();
-  LEDInit();
+  InitButton();
+  InitLED();
 
-  MainInit1();
+  InitMain1();
 }
 
 //
 //  loop
 //
 void loop(void) {
-  ButtonLoop();
-  LEDLoop();
+  LoopButton();
+  LoopLED();
 
   if (button[1].status == RELEASE) {
     select = (select == 3) ? 1 : select + 1;
     switch (select) {
-      case 1: MainInit1(); break;
-      case 2: MainInit2(); break;
-      case 3: MainInit3(); break;
+      case 1: InitMain1(); break;
+      case 2: InitMain2(); break;
+      case 3: InitMain3(); break;
       default: break;
     }
   }
 
   switch (select) {
-    case 1: MainLoop1(); break;
-    case 2: MainLoop2(); break;
-    case 3: MainLoop3(); break;
+    case 1: LoopMain1(); break;
+    case 2: LoopMain2(); break;
+    case 3: LoopMain3(); break;
     default: break;
   }
 

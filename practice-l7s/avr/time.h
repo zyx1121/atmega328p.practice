@@ -21,11 +21,11 @@ typedef struct time_s {
 
 time_t time = {0, 0, 0, 0, false, false};
 
-void TimeInit(void) {
+void InitTime(void) {
   time = (time_t){0, 0, 0, 0, false, false};
 }
 
-void TimeLoop(void) {
+void LoopTime(void) {
   if (++time.millisecond >= 1000) {
     time.millisecond = 0;
     time.second++;

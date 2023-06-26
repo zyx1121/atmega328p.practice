@@ -25,7 +25,7 @@ typedef struct l7s_s {
 
 l7s_t l7s[SCAN_N];
 
-void L7SInit(void) {
+void InitL7S(void) {
   uint8_t i;
 
   pinMode(LATCH_P, OUTPUT);
@@ -43,7 +43,7 @@ void L7SInit(void) {
   }
 }
 
-void L7SLoop(void) {
+void LoopL7S(void) {
   static uint8_t scan = 4;
   uint8_t i;
 

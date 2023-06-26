@@ -1,28 +1,7 @@
-//  ┌────────────────────────────────────────────┐
-//  │  ATMega328P                                │
-//  │                 ┌────────┐                 │
-//  │           [RST] │01    28│ A5              │
-//  │           [RXD] │02    27│ A4              │
-//  │           [TXD] │03    26│ A3    (LED7)    │
-//  │               2 │04    25│ A2    (LED6)    │
-//  │              ~3 │05    24│ A1    (LED5)    │
-//  │               4 │06    23│ A0    (LED4)    │
-//  │           [VCC] │07    22│ [GND]           │
-//  │           [GND] │08    21│ [AREF]          │
-//  │          [XTAL] │09    20│ [VCC]           │
-//  │          [XTAL] │10    19│ 13    (LED3)    │
-//  │              ~5 │11    18│ 12    (LED2)    │
-//  │              ~6 │12    17│ 11~   (LED1)    │
-//  │    (BTN0)     7 │13    16│ 10~   (LED0)    │
-//  │               8 │14    15│ 9~              │
-//  │                 └────────┘                 │
-//  └────────────────────────────────────────────┘
 //
 //  filename    : avr.ino
-//  path        : practice-1/avr/avr.ino
 //  description : Scan line control
 //  author      : Loki
-//  last update : 2023/06/26 11:42
 //
 
 #include "button.h"
@@ -131,18 +110,18 @@ void ModeSetting(void) {
 //  setup
 //
 void setup(void) {
-  ButtonInit();
-  L7SInit();
-  TimeInit();
+  InitButton();
+  InitL7S();
+  InitTime();
 }
 
 //
 //  loop
 //
 void loop(void) {
-  ButtonLoop();
-  L7SLoop();
-  if (mode != 2) TimeLoop();
+  LoopButton();
+  LoopL7S();
+  if (mode != 2) LoopTime();
 
   switch (mode) {
     case 0: ModeClock(); break;

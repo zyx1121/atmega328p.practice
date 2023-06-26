@@ -1,9 +1,7 @@
 //
 //  filename    : button.h
-//  path        : practice-1/avr/button.h
 //  description : button control
 //  author      : Loki
-//  last update : 2023/05/17 16:44
 //
 
 #ifndef _BUTTON_H_
@@ -18,12 +16,12 @@ struct button_s { uint16_t holdTime; uint8_t  status; };
 
 button_s button[BTNS_N];
 
-void ButtonInit(void) {
+void InitButton(void) {
   uint8_t i;
   for (i = 0; i < BTNS_N; i++) pinMode(BTNS_P[i], INPUT);
 }
 
-void ButtonLoop(void) {
+void LoopButton(void) {
   uint8_t i, btnRead;
 
   for (i = 0; i < BTNS_N; i++) {
