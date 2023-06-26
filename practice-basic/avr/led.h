@@ -10,7 +10,7 @@
 #define _LED_H_
 
 const uint8_t LED_N = 8;
-const uint8_t LED_P[] = { 10, 11, 12, 13, A0, A1, A2, A3 };
+const uint8_t LED_P[] = { 5, 6, 7, 8, 9, 10, 11, 12 };
 
 uint8_t led = 0x00;
 

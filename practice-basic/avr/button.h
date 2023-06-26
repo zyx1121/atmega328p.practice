@@ -9,8 +9,8 @@
 #ifndef _BUTTON_H_
 #define _BUTTON_H_
 
-const uint8_t BTNS_N   = 1 ;
-const uint8_t BTNS_P[] = { 7 } ;
+const uint8_t BTNS_N   = 2 ;
+const uint8_t BTNS_P[] = { 2, 3 } ;
 
 enum status_e { IDLE, PRESS, HOLD, RELEASE };
 

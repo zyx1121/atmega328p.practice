@@ -20,49 +20,32 @@
 //
 //  filename    : avr.ino
 //  path        : practice-1/avr/avr.ino
-//  description : AVR practice 1
+//  description : LED and Button control
 //  author      : Loki
-//  last update : 2023/05/17 16:44
+//  last update : 2023/06/26 11:42
 //
 
 #include "button.h"
 #include "led.h"
 
-//
-//  practice select
-//
-const uint8_t select = 3;
-
 void MainInit1(void);
-void MainLoop1(void);
 void MainInit2(void);
-void MainLoop2(void);
 void MainInit3(void);
+void MainLoop1(void);
+void MainLoop2(void);
 void MainLoop3(void);
-void setup(void);
-void loop(void);
+
+uint8_t select = 1;
 
 //
 //  practice 1-1
 //
 void MainInit1(void) {
-  led = 0x00;
+  led = 0xf0;
 }
 void MainLoop1(void) {
-  static uint16_t timeCounter = 0;
-  static uint8_t  ledCounter = 5;
-
   if (button[0].status == PRESS) {
-    led = 0xff;
-    ledCounter = 0;
-  }
-
-  if (ledCounter < 5) {
-    if (++timeCounter == 500) {
-      led = ~led;
-      timeCounter = 0;
-      ledCounter++;
-    }
+    led = (led == 0x0f) ? 0xf0 : 0x0f;
   }
 }
 
@@ -70,11 +53,19 @@ void MainLoop1(void) {
 //  practice 1-2
 //
 void MainInit2(void) {
-  led = 0xf0;
+  led = 0x00;
 }
 void MainLoop2(void) {
-  if (button[0].status == PRESS) {
-    led = (led == 0x0f) ? 0xf0 : 0x0f;
+  static uint16_t timeCounter = 0;
+
+  if (button[0].status == HOLD) {
+    led = 0xff;
+    timeCounter = 0;
+  }
+
+  if (++timeCounter >= 500) {
+    led = ~led;
+    timeCounter = 0;
   }
 }
 
@@ -104,12 +95,7 @@ void setup(void) {
   ButtonInit();
   LEDInit();
 
-  switch (select) {
-    case 1: MainInit1(); break;
-    case 2: MainInit2(); break;
-    case 3: MainInit3(); break;
-    default: break;
-  }
+  MainInit1();
 }
 
 //
@@ -118,6 +104,16 @@ void setup(void) {
 void loop(void) {
   ButtonLoop();
   LEDLoop();
+
+  if (button[1].status == RELEASE) {
+    select = (select == 3) ? 1 : select + 1;
+    switch (select) {
+      case 1: MainInit1(); break;
+      case 2: MainInit2(); break;
+      case 3: MainInit3(); break;
+      default: break;
+    }
+  }
 
   switch (select) {
     case 1: MainLoop1(); break;
