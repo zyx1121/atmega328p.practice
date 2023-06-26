@@ -5,11 +5,13 @@
 ### 安裝 Arduino CLI 並設置環境變數
 
 **MacOS**
+
 ```bash
 brew install arduino-cli
 ```
 
 **Windows**
+
 參考 [Arduino CLI 官方文件](https://arduino.github.io/arduino-cli/0.33/installation/) 並下載 Latest release Windows 64 bit exe
 解壓縮到 `C:\Source\arduino-cli\`
 打開終端機輸入
@@ -20,11 +22,13 @@ setx /m PATH "%PATH%;C:\Source\arduino-cli\"
 ### 安裝 VSCode
 
 **MacOS**
+
 ```bash
 brew cask install visual-studio-code
 ```
 
 **Windows**
+
 參考 [VSCode 官方文件](https://code.visualstudio.com/docs/setup/windows)
 下載並安裝 Windows 64 bit exe
 
