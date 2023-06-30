@@ -1,37 +1,35 @@
 //
 //  filename    : button.h
-//  path        : practice-bt/avr/button.h
-//  description : button control (mouseDown)
+//  description : button control
 //  author      : Loki
-//  last update : 2023/05/29 18:17
 //
 
 #ifndef _BUTTON_H_
 #define _BUTTON_H_
 
-const uint8_t BTNS_N   = 1 ;
-const uint8_t BTNS_P[] = { 7 } ;
+const uint8_t BTNS_N   = 2 ;
+const uint8_t BTNS_P[] = { 2, 3 } ;
 
 enum status_e { IDLE, PRESS, HOLD, RELEASE };
 
-struct button_s { uint16_t holdTime; uint8_t  status; bool mouseDown; };
+struct button_s { uint16_t holdTime; uint8_t  status; };
 
 button_s button[BTNS_N];
 
-void ButtonInit(void) {
+void InitButton(void) {
   uint8_t i;
   for (i = 0; i < BTNS_N; i++) pinMode(BTNS_P[i], INPUT);
 }
 
-void ButtonLoop(void) {
-  uint8_t i, buttonDown;
+void LoopButton(void) {
+  uint8_t i, btnRead;
 
   for (i = 0; i < BTNS_N; i++) {
-    buttonDown = !digitalRead(BTNS_P[i]);
+    btnRead = digitalRead(BTNS_P[i]);
     switch(button[i].status) {
       // IDLE
       case IDLE : {
-        button[i].status = (buttonDown || button[i].mouseDown) ? PRESS : button[i].status;
+        button[i].status = btnRead ? button[i].status : PRESS ;
         break;
       }
       // PRESS
@@ -41,8 +39,8 @@ void ButtonLoop(void) {
       }
       // HOLD
       case HOLD: {
-        button[i].status = (buttonDown || button[i].mouseDown) ? button[i].status : RELEASE;
-        button[i].holdTime = (buttonDown || button[i].mouseDown) ? button[i].holdTime + 1 : 0;
+        button[i].status = btnRead ? RELEASE : button[i].status;
+        button[i].holdTime = btnRead ? 0 : button[i].holdTime + 1;
         break;
       }
       // RELEASE

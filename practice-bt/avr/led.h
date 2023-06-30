@@ -1,25 +1,23 @@
 //
 //  filename    : led.h
-//  path        : practice-bt/avr/led.h
 //  description : led control
 //  author      : Loki
-//  last update : 2023/05/17 16:44
 //
 
 #ifndef _LED_H_
 #define _LED_H_
 
 const uint8_t LED_N = 8;
-const uint8_t LED_P[] = { 10, 11, 12, 13, A0, A1, A2, A3 };
+const uint8_t LED_P[] = { 5, 6, 7, 8, 9, 10, 11, 12 };
 
 uint8_t led = 0x00;
 
-void LEDInit(void) {
+void InitLED(void) {
   for (uint8_t i = 0; i < LED_N; i++)
     pinMode(LED_P[i], OUTPUT);
 }
 
-void LEDLoop(void) {
+void LoopLED(void) {
   for (uint8_t i = 0; i < LED_N; i++)
     digitalWrite(LED_P[i], (led >> i) & 1);
 }
