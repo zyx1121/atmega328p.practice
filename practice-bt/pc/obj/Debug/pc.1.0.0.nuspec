@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>pc</id>
+    <version>1.0.0</version>
+    <authors>pc</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0-windows7.0" />
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="C:\Users\user\Documents\Temp\pc\bin\Debug\net6.0-windows\pc.runtimeconfig.json" target="lib\net6.0-windows7.0\pc.runtimeconfig.json" />
+    <file src="C:\Users\user\Documents\Temp\pc\bin\Debug\net6.0-windows\pc.dll" target="lib\net6.0-windows7.0\pc.dll" />
+  </files>
+</package>
