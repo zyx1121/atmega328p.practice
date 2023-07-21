@@ -14,14 +14,9 @@ brew install arduino-cli
 
 **Windows**
 
-參考 [Arduino CLI 官方文件](https://arduino.github.io/arduino-cli/0.33/installation/) 並下載 Latest release Windows 64 bit exe
+參考 [Arduino CLI 官方文件](https://arduino.github.io/arduino-cli/0.33/installation/) 下載 Latest release Windows 64 bit exe
 
-解壓縮到 `C:\Source\arduino-cli\`
-
-打開終端機輸入
-```bash
-setx /m PATH "%PATH%;C:\Source\arduino-cli\"
-```
+解壓縮到 `C:\Source\arduino-cli\` 並設置環境變數
 
 ---
 
@@ -35,9 +30,7 @@ brew cask install visual-studio-code
 
 **Windows**
 
-參考 [VSCode 官方文件](https://code.visualstudio.com/docs/setup/windows)
-
-下載並安裝 Windows 64 bit exe
+參考 [VSCode 官方文件](https://code.visualstudio.com/docs/setup/windows) 下載並安裝
 
 ---
 
@@ -57,7 +50,5 @@ brew cask install visual-studio-code
 **Windows**
 
 ```json
-"arduino.path": "C:\\Source\\arduino-cli\\0.33.0\\bin\\",
 "arduino.useArduinoCli": true,
-"arduino.commandPath": "arduino-cli",
 ```
