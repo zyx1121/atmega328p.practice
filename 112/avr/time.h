@@ -19,7 +19,7 @@ typedef struct time_s {
 } time_t;
 
 RTC_DS3231 rtc;
-time_t time = {{23, 11, 21, 0, 0, 0}, millis(), false, false, false, false};
+time_t time = {{23, 11, 21, 0, 0, 0}, millis(), 0, 0, 0, 0, 0, 0, false, false, false, false};
 
 void InitTime(void) {
   rtc.begin();
