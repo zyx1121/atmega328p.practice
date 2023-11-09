@@ -47,20 +47,25 @@ void loop(void) {
     mode = ++mode % 4;
   }
 
-  switch (mode) {
-    case 1:
-      Loop1();
-      break;
+  static uint64_t preMillis = millis();
+  if (millis() - preMillis >= 10) {
+    preMillis = millis();
 
-    case 2:
-      Loop2();
-      break;
+    switch (mode) {
+      case 1:
+        Loop1();
+        break;
 
-    case 3:
-      Loop3();
-      break;
+      case 2:
+        Loop2();
+        break;
 
-    default:
-      break;
+      case 3:
+        Loop3();
+        break;
+
+      default:
+        break;
+    }
   }
 }
