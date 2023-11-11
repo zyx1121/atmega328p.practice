@@ -41,12 +41,6 @@ void loop(void) {
   LoopOLED();
   LoopTime();
 
-  // button control example
-  if (button[0].status == HOLD && button[1].status == HOLD &&
-      button[0].holdTime >= 1000 && button[1].holdTime >= 1000) {
-    mode = ++mode % 4;
-  }
-
   static uint64_t preMillis = millis();
   if (millis() - preMillis >= 10) {
     preMillis = millis();
