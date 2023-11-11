@@ -1,7 +1,0 @@
-{
-    "board": "arduino:avr:uno",
-    "programmer": "avrisp",
-    "port": "COM4",
-    "sketch": "112\\avr\\avr.ino",
-    "output": "./.output"
-}
