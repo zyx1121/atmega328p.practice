@@ -1,3 +1,4 @@
+#line 1 "D:\\atmega328p.practice\\112\\avr\\time.h"
 #ifndef _TIME_H_
 #define _TIME_H_
 

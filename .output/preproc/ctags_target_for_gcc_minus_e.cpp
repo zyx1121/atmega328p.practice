@@ -1,8 +1,9 @@
-#include "led.h"
-#include "time.h"
-#include "button.h"
-#include "bluetooth.h"
-#include "oled.h"
+# 1 "D:\\atmega328p.practice\\112\\avr\\avr.ino"
+# 2 "D:\\atmega328p.practice\\112\\avr\\avr.ino" 2
+# 3 "D:\\atmega328p.practice\\112\\avr\\avr.ino" 2
+# 4 "D:\\atmega328p.practice\\112\\avr\\avr.ino" 2
+# 5 "D:\\atmega328p.practice\\112\\avr\\avr.ino" 2
+# 6 "D:\\atmega328p.practice\\112\\avr\\avr.ino" 2
 
 volatile uint8_t mode = 1;
 
@@ -17,7 +18,7 @@ void Loop1(void) {
             1 * (button[2].status != IDLE ? 1 : 0),
             1 * (button[3].status != IDLE ? 1 : 0));
   oled.clearDisplay();
-  oled.setTextColor(WHITE);
+  oled.setTextColor(1 /*|< Draw 'on' pixels*/ /*|< Draw 'on' pixels*/);
   oled.setCursor(0, 0);
   oled.setTextSize(1);
   oled.print(buffer);
@@ -51,7 +52,7 @@ void Loop2(void) {
   if (millis() >= preMillis + 1000) mode = 1;
 
   oled.clearDisplay();
-  oled.setTextColor(WHITE);
+  oled.setTextColor(1 /*|< Draw 'on' pixels*/ /*|< Draw 'on' pixels*/);
   oled.setCursor(0, 0);
   oled.setTextSize(1);
   oled.print("btn1");
@@ -64,7 +65,7 @@ void Init3(void) {
 void Loop3(void) {
   if (millis() >= preMillis + 1000) mode = 1;
   oled.clearDisplay();
-  oled.setTextColor(WHITE);
+  oled.setTextColor(1 /*|< Draw 'on' pixels*/ /*|< Draw 'on' pixels*/);
   oled.setCursor(0, 0);
   oled.setTextSize(1);
   oled.print("btn2");
@@ -74,7 +75,7 @@ void Loop3(void) {
 void Loop4(void) {
   if (millis() >= preMillis + 1000) mode = 1;
   oled.clearDisplay();
-  oled.setTextColor(WHITE);
+  oled.setTextColor(1 /*|< Draw 'on' pixels*/ /*|< Draw 'on' pixels*/);
   oled.setCursor(0, 0);
   oled.setTextSize(1);
   oled.print("btn3");
@@ -84,7 +85,7 @@ void Loop4(void) {
 void Loop5(void) {
   if (millis() >= preMillis + 2000) mode = 1;
   oled.clearDisplay();
-  oled.setTextColor(WHITE);
+  oled.setTextColor(1 /*|< Draw 'on' pixels*/ /*|< Draw 'on' pixels*/);
   oled.setCursor(0, 0);
   oled.setTextSize(1);
   oled.print("btn1 and btn3");

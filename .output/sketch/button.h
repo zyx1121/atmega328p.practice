@@ -1,3 +1,4 @@
+#line 1 "D:\\atmega328p.practice\\112\\avr\\button.h"
 #ifndef _BUTTON_H_
 #define _BUTTON_H_
 

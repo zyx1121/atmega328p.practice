@@ -1,3 +1,5 @@
+#include <Arduino.h>
+#line 1 "D:\\atmega328p.practice\\112\\avr\\avr.ino"
 #include "led.h"
 #include "time.h"
 #include "button.h"
@@ -9,6 +11,25 @@ volatile uint8_t mode = 1;
 static uint64_t preMillis = millis();
 static uint64_t preMillis1 = millis();
 // oled display example
+#line 12 "D:\\atmega328p.practice\\112\\avr\\avr.ino"
+void Loop1(void);
+#line 47 "D:\\atmega328p.practice\\112\\avr\\avr.ino"
+void Init2(void);
+#line 50 "D:\\atmega328p.practice\\112\\avr\\avr.ino"
+void Loop2(void);
+#line 61 "D:\\atmega328p.practice\\112\\avr\\avr.ino"
+void Init3(void);
+#line 64 "D:\\atmega328p.practice\\112\\avr\\avr.ino"
+void Loop3(void);
+#line 74 "D:\\atmega328p.practice\\112\\avr\\avr.ino"
+void Loop4(void);
+#line 84 "D:\\atmega328p.practice\\112\\avr\\avr.ino"
+void Loop5(void);
+#line 94 "D:\\atmega328p.practice\\112\\avr\\avr.ino"
+void setup(void);
+#line 104 "D:\\atmega328p.practice\\112\\avr\\avr.ino"
+void loop(void);
+#line 12 "D:\\atmega328p.practice\\112\\avr\\avr.ino"
 void Loop1(void) {
   char buffer[32];
   // sprintf(buffer, "%02u:%02u:%02u, %u.%u", time.hour, time.minute, time.second, time.tempInt, time.tempFloat);
@@ -140,3 +161,4 @@ void loop(void) {
 
   delay(1);
 }
+

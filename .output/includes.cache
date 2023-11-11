@@ -1,0 +1,137 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\standard"
+  },
+  {
+    "Sourcefile": "d:\\atmega328p.practice\\.output\\sketch\\avr.ino.cpp",
+    "Include": "Wire.h",
+    "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\libraries\\Wire\\src"
+  },
+  {
+    "Sourcefile": "d:\\atmega328p.practice\\.output\\sketch\\avr.ino.cpp",
+    "Include": "RTClib.h",
+    "Includepath": "C:\\Users\\user\\Documents\\Arduino\\libraries\\RTClib\\src"
+  },
+  {
+    "Sourcefile": "d:\\atmega328p.practice\\.output\\sketch\\avr.ino.cpp",
+    "Include": "Adafruit_I2CDevice.h",
+    "Includepath": "C:\\Users\\user\\Documents\\Arduino\\libraries\\Adafruit_BusIO"
+  },
+  {
+    "Sourcefile": "d:\\atmega328p.practice\\.output\\sketch\\avr.ino.cpp",
+    "Include": "Adafruit_GFX.h",
+    "Includepath": "C:\\Users\\user\\Documents\\Arduino\\libraries\\Adafruit_GFX_Library"
+  },
+  {
+    "Sourcefile": "d:\\atmega328p.practice\\.output\\sketch\\avr.ino.cpp",
+    "Include": "SPI.h",
+    "Includepath": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\libraries\\SPI\\src"
+  },
+  {
+    "Sourcefile": "d:\\atmega328p.practice\\.output\\sketch\\avr.ino.cpp",
+    "Include": "Adafruit_SSD1306.h",
+    "Includepath": "C:\\Users\\user\\Documents\\Arduino\\libraries\\Adafruit_SSD1306"
+  },
+  {
+    "Sourcefile": "d:\\atmega328p.practice\\.output\\sketch\\avr.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\libraries\\Wire\\src\\Wire.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\libraries\\Wire\\src\\utility\\twi.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\RTClib\\src\\RTC_DS1307.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\RTClib\\src\\RTC_DS3231.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\RTClib\\src\\RTC_Micros.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\RTClib\\src\\RTC_Millis.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\RTClib\\src\\RTC_PCF8523.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\RTClib\\src\\RTC_PCF8563.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\RTClib\\src\\RTClib.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\Adafruit_BusIO\\Adafruit_BusIO_Register.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\Adafruit_BusIO\\Adafruit_I2CDevice.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\Adafruit_BusIO\\Adafruit_SPIDevice.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\Adafruit_GFX_Library\\Adafruit_GFX.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\Adafruit_GFX_Library\\Adafruit_GrayOLED.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\Adafruit_GFX_Library\\Adafruit_SPITFT.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\Adafruit_GFX_Library\\glcdfont.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\libraries\\SPI\\src\\SPI.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\user\\Documents\\Arduino\\libraries\\Adafruit_SSD1306\\Adafruit_SSD1306.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]
