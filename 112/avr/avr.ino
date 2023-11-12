@@ -25,16 +25,16 @@ void Loop1(void) {
 
   static uint8_t flag = 0;
 
-  if ((millis() - time.millis) % 100) {
-    flag = (ledPWM == 9 || ledPWM == 0) ? !flag : flag;
-    ledPWM = flag ? ledPWM - 1 : ledPWM + 1;
-  }
-
-  // if (millis() >= preMillis1 + 25) {
-  //   preMillis1 = millis();
+  // if ((millis() - time.millis) % 100) {
   //   flag = (ledPWM == 9 || ledPWM == 0) ? !flag : flag;
   //   ledPWM = flag ? ledPWM - 1 : ledPWM + 1;
   // }
+
+  if (millis() >= preMillis1 + 25) {
+    preMillis1 = millis();
+    flag = (ledPWM == 9 || ledPWM == 0) ? !flag : flag;
+    ledPWM = flag ? ledPWM - 1 : ledPWM + 1;
+  }
   //ledPWM = map(time.second,0,60,0,16);
 
   // if (button[0].status == RELEASE) preMillis = millis(), mode = 2;
