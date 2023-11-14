@@ -90,7 +90,7 @@ void Loop2(void) {
 
   // 設定值增加
   if (button[1].status == PRESS || (button[1].status == HOLD && button[1].holdTime >= 1000)) {
-    if (button[1].status == HOLD) button[1].holdTime -= 800;
+    if (button[1].status == HOLD) button[1].holdTime -= 125;
     switch (index) {
       case 0:
         set.second = (set.second + 1) % 60;
@@ -111,7 +111,7 @@ void Loop2(void) {
 
   // 設定值減少
   if (button[2].status == PRESS || (button[2].status == HOLD && button[2].holdTime >= 1000)) {
-    if (button[2].status == HOLD) button[2].holdTime -= 800;
+    if (button[2].status == HOLD) button[2].holdTime -= 125;
     switch (index) {
       case 0:
         set.second = (set.second + 59) % 60;
