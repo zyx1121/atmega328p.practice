@@ -1,21 +1,45 @@
-#include "led.h"
-#include "time.h"
 #include "button.h"
-#include "bluetooth.h"
+#include "led.h"
 #include "oled.h"
+#include "time.h"
 
-volatile uint8_t mode = 1;
+volatile uint8_t state = 0;
 
-static uint64_t preMillis = millis();
-static uint64_t preMillis1 = millis();
-// oled display example
+#include "bluetooth.h"
+
+uint64_t preMillis = millis();
+
+void Loop(void) {
+  one = time.quarter;
+
+  if (button[3].status == HOLD && button[3].holdTime >= 1000) Init2();
+}
+
+// 顯示時間（hh:mm:ss）
+void Loop0(void) {
+  char buffer[32];
+
+  if (time.half) {
+    sprintf(buffer, "%04u-%02u-%02u, %02u:%02u:%02u", time.year, time.month, time.day, time.hour, time.minute, time.second);
+  } else {
+    sprintf(buffer, "%04u-%02u-%02u, %02u %02u %02u", time.year, time.month, time.day, time.hour, time.minute, time.second);
+  }
+
+  oled.clearDisplay();
+  oled.setTextColor(WHITE);
+  oled.setCursor(0, 0);
+  oled.setTextSize(1);
+  oled.print(buffer);
+
+  if (button[0].status == PRESS) state = 1;
+}
+
+// 顯示溫度（xx.xx）
 void Loop1(void) {
   char buffer[32];
-  // sprintf(buffer, "%02u:%02u:%02u, %u.%u", time.hour, time.minute, time.second, time.tempInt, time.tempFloat);
-  sprintf(buffer, "%u%u%u%u", 1 * (button[0].status != IDLE ? 1 : 0),
-            1 * (button[1].status != IDLE ? 1 : 0),
-            1 * (button[2].status != IDLE ? 1 : 0),
-            1 * (button[3].status != IDLE ? 1 : 0));
+
+  sprintf(buffer, "%u.%u", time.tempInt, time.tempFloat);
+
   oled.clearDisplay();
   oled.setTextColor(WHITE);
   oled.setCursor(0, 0);
@@ -23,72 +47,96 @@ void Loop1(void) {
   oled.print(buffer);
   oled.display();
 
-  static uint8_t flag = 0;
-
-  // if ((millis() - time.millis) % 100) {
-  //   flag = (ledPWM == 9 || ledPWM == 0) ? !flag : flag;
-  //   ledPWM = flag ? ledPWM - 1 : ledPWM + 1;
-  // }
-
-  if (millis() >= preMillis1 + 25) {
-    preMillis1 = millis();
-    flag = (ledPWM == 9 || ledPWM == 0) ? !flag : flag;
-    ledPWM = flag ? ledPWM - 1 : ledPWM + 1;
-  }
-  //ledPWM = map(time.second,0,60,0,16);
-
-  // if (button[0].status == RELEASE) preMillis = millis(), mode = 2;
-  // if (button[1].status == RELEASE) preMillis = millis(), mode = 3;
-  // if (button[2].status == RELEASE) preMillis = millis(), mode = 4;
-  // if (button[0].status == HOLD && button[2].status == HOLD && button[0].holdTime >= 500 && button[2].holdTime >= 500)
-  //   preMillis = millis(), mode = 5;
+  if (button[0].status == PRESS) state = 0;
 }
 
+// 設定時間（hh:mm:ss）
+time_t set;
 void Init2(void) {
-}
+  DateTime now = rtc.now();
+  set.year = now.year();
+  set.month = now.month();
+  set.day = now.day();
+  set.hour = now.hour();
+  set.minute = now.minute();
+  set.second = now.second();
 
+  state = 2;
+}
 void Loop2(void) {
-  if (millis() >= preMillis + 1000) mode = 1;
+  static uint8_t index = 0;
+  char buffer[32];
+
+  if (time.quarter) {
+    sprintf(buffer, "%02u:%02u:%02u", set.hour, set.minute, set.second);
+  } else {
+    sprintf(buffer, "%02u %02u %02u", set.hour, set.minute, set.second);
+  }
 
   oled.clearDisplay();
   oled.setTextColor(WHITE);
   oled.setCursor(0, 0);
   oled.setTextSize(1);
-  oled.print("btn1");
-  oled.display();
-}
+  oled.print(buffer);
 
-void Init3(void) {
+  // 確認更改
+  if (button[0].status == PRESS) {
+    if (++index >= 3) {
+      rtc.adjust((DateTime){set.year, set.month, set.day, set.hour, set.minute, set.second});
+      index = 0;
+      state = 0;
+    }
+  }
+
+  // 設定值增加
+  if (button[1].status == PRESS || (button[1].status == HOLD && button[1].holdTime >= 1000)) {
+    if (button[1].status == HOLD) button[1].holdTime -= 800;
+    switch (index) {
+      case 0:
+        set.second = (set.second + 1) % 60;
+        break;
+
+      case 1:
+        set.minute = (set.minute + 1) % 60;
+        break;
+
+      case 2:
+        set.hour = (set.hour + 1) % 24;
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  // 設定值減少
+  if (button[2].status == PRESS || (button[2].status == HOLD && button[2].holdTime >= 1000)) {
+    if (button[2].status == HOLD) button[2].holdTime -= 800;
+    switch (index) {
+      case 0:
+        set.second = (set.second + 59) % 60;
+        break;
+
+      case 1:
+        set.minute = (set.minute + 59) % 60;
+        break;
+
+      case 2:
+        set.hour = (set.hour + 23) % 24;
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  // 離開設定
+  if (button[3].status == PRESS) {
+    state = 0;
+  }
 }
 
 void Loop3(void) {
-  if (millis() >= preMillis + 1000) mode = 1;
-  oled.clearDisplay();
-  oled.setTextColor(WHITE);
-  oled.setCursor(0, 0);
-  oled.setTextSize(1);
-  oled.print("btn2");
-  oled.display();
-}
-
-void Loop4(void) {
-  if (millis() >= preMillis + 1000) mode = 1;
-  oled.clearDisplay();
-  oled.setTextColor(WHITE);
-  oled.setCursor(0, 0);
-  oled.setTextSize(1);
-  oled.print("btn3");
-  oled.display();
-}
-
-void Loop5(void) {
-  if (millis() >= preMillis + 2000) mode = 1;
-  oled.clearDisplay();
-  oled.setTextColor(WHITE);
-  oled.setCursor(0, 0);
-  oled.setTextSize(1);
-  oled.print("btn1 and btn3");
-  oled.display();
 }
 
 void setup(void) {
@@ -99,8 +147,6 @@ void setup(void) {
   InitTime();
 }
 
-//0b1100110
-
 void loop(void) {
   LoopLED();
   LoopBluetooth();
@@ -108,10 +154,11 @@ void loop(void) {
   LoopOLED();
   LoopTime();
 
-  switch (mode) {
+  Loop();
+
+  switch (state) {
     case 0:
-      static uint64_t preMillis = millis();
-      if (millis() >= preMillis + 2000) mode = 1;
+      Loop0();
       break;
 
     case 1:
@@ -124,14 +171,6 @@ void loop(void) {
 
     case 3:
       Loop3();
-      break;
-
-    case 4:
-      Loop4();
-      break;
-
-    case 5:
-      Loop5();
       break;
 
     default:

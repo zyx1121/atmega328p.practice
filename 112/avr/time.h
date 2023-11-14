@@ -2,6 +2,7 @@
 #define _TIME_H_
 
 #include <Wire.h>
+
 #include "RTClib.h"
 
 typedef struct time_s {
@@ -26,10 +27,6 @@ time_t time = {{23, 11, 21, 0, 0, 0}, millis(), 0, 0, 0, 0, 0, 0, 0, 0, false, f
 
 void InitTime(void) {
   rtc.begin();
-
-  // if (rtc.lostPower()) {
-  //   rtc.adjust(time.now);
-  // }
 }
 
 void LoopTime(void) {
